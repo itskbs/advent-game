@@ -84,6 +84,8 @@ Tagging a version (`git tag v0.1.0 && git push --tags`) triggers
 2. Publish a GitHub release with those binaries attached
 3. Push an updated formula to the `itskbs/homebrew-advent-game`
    tap repo
+4. Tag and create a matching release on the tap repo itself, so its
+   version history mirrors this repo's
 
 One-time setup before the first release:
 

@@ -30,3 +30,16 @@ jobs:
           # A PAT with repo access to homebrew-advent-game, so goreleaser
           # can push the updated formula there. Create it as a repo secret.
           HOMEBREW_TAP_GITHUB_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
+
+      # GoReleaser only commits the updated formula to the tap repo; it
+      # doesn't tag or release it. Mirror this release's tag there too,
+      # pointing at the commit GoReleaser just pushed.
+      - name: Tag and release the Homebrew tap
+        env:
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            --repo itskbs/homebrew-advent-game \
+            --target main \
+            --title "${{ github.ref_name }}" \
+            --notes "Formula update for advent-game ${{ github.ref_name }}"
