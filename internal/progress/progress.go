@@ -88,6 +88,12 @@ func (p Progress) Save() error {
 	return nil
 }
 
+// Reset wipes all saved progress, overwriting the save file with an
+// empty result. Used by the CLI's --debug --reset flag for local testing.
+func Reset() error {
+	return empty().Save()
+}
+
 // MarkSolved records day as solved with the given reward letter,
 // overwriting any previous result for that day (replaying a day is
 // allowed and simply re-confirms the letter).
