@@ -25,6 +25,22 @@ brew tap itskbs/advent-game
 brew install advent-game
 ```
 
+## Uninstalling
+
+```sh
+brew uninstall advent-game
+brew untap itskbs/advent-game  # optional, removes the tap too
+```
+
+Homebrew only removes what it installed — it doesn't know about `progress.json`,
+which the app writes itself at runtime. It's harmless to leave behind (and lets
+you pick up where you left off if you ever reinstall), but if you want it gone
+too:
+
+```sh
+rm -rf ~/Library/Application\ Support/advent-game
+```
+
 ## Development
 
 Requires Go 1.27+. No external dependencies — everything is stdlib.
@@ -84,6 +100,8 @@ Tagging a version (`git tag v0.1.0 && git push --tags`) triggers
 2. Publish a GitHub release with those binaries attached
 3. Push an updated formula to the `itskbs/homebrew-advent-game`
    tap repo
+4. Tag and create a matching release on the tap repo itself, so its
+   version history mirrors this repo's
 
 One-time setup before the first release:
 
