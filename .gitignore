@@ -1,0 +1,4 @@
+/dist/
+/advent-game
+*.test
+.DS_Store

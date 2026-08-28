@@ -1,0 +1,52 @@
+# GoReleaser config: builds release binaries and publishes a Homebrew
+# formula on every tag push (see README.md for the release process).
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: advent-game
+    main: ./cmd/advent-game
+    binary: advent-game
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: advent-game
+    formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_{{ .Os }}_{{ .Arch }}
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+
+brews:
+  - name: advent-game
+    # Formula is committed to this separate tap repo, which you `brew tap`.
+    repository:
+      owner: kevschroeder99
+      name: homebrew-advent-game
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    directory: Formula
+    homepage: "https://github.com/kevschroeder99/advent-game"
+    description: "A CLI advent calendar: one puzzle a day, one letter per solve."
+    license: "MIT"
+    install: |
+      bin.install "advent-game"
+    test: |
+      system "#{bin}/advent-game", "help"

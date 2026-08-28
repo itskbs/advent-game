@@ -1,0 +1,8 @@
+{
+  "day": 1,
+  "title": "Santa's Little Helpers",
+  "question": "What do you traditionally call Santa's helpers who work in his workshop?",
+  "choices": ["Elves", "Gnomes", "Fairies", "Dwarves"],
+  "answerIndex": 0,
+  "letter": "A"
+}
