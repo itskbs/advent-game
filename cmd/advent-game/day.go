@@ -11,13 +11,13 @@ import (
 	"github.com/itskbs/advent-game/internal/quiz"
 )
 
-func runDay(day int) error {
+func runDay(day int, bypassLock bool) error {
 	if day < puzzles.FirstDay || day > puzzles.LastDay {
 		return fmt.Errorf("day must be between %d and %d, got %d", puzzles.FirstDay, puzzles.LastDay, day)
 	}
 
 	now := lock.Now()
-	if !lock.IsUnlocked(day, now) {
+	if !bypassLock && !lock.IsUnlocked(day, now) {
 		fmt.Printf("🔒 Day %d isn't open yet. Come back on %s.\n", day, lock.UnlockDate(day, now).Format("Jan 2"))
 		return nil
 	}

@@ -65,6 +65,15 @@ ADVENT_GAME_NOW=2026-12-05T09:00:00Z ADVENT_GAME_HOME=/tmp/advent-game-dev \
   go run ./cmd/advent-game day5
 ```
 
+For a quicker one-off check of a specific day (or every day), skip the
+env vars and use the debug flags instead:
+
+```sh
+go run ./cmd/advent-game --debug --day12       # play day 12 right now, lock or no lock
+go run ./cmd/advent-game --debug --all status  # status view with every day shown unlocked
+go run ./cmd/advent-game --debug --all day20   # same idea, via the day<N> command
+```
+
 ### Releasing
 
 Tagging a version (`git tag v0.1.0 && git push --tags`) triggers
