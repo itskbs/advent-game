@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kevschroeder99/advent-game/internal/puzzles"
+	"github.com/itskbs/advent-game/internal/puzzles"
 )
 
 // Ask prints the puzzle's question and numbered choices to out, reads

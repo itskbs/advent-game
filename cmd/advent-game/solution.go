@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/kevschroeder99/advent-game/internal/progress"
-	"github.com/kevschroeder99/advent-game/internal/puzzles"
+	"github.com/itskbs/advent-game/internal/progress"
+	"github.com/itskbs/advent-game/internal/puzzles"
 )
 
 func runSolution() error {

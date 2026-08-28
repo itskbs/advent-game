@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/kevschroeder99/advent-game/internal/lock"
-	"github.com/kevschroeder99/advent-game/internal/progress"
-	"github.com/kevschroeder99/advent-game/internal/puzzles"
+	"github.com/itskbs/advent-game/internal/lock"
+	"github.com/itskbs/advent-game/internal/progress"
+	"github.com/itskbs/advent-game/internal/puzzles"
 )
 
 func runStatus() error {

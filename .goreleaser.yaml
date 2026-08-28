@@ -39,11 +39,11 @@ brews:
   - name: advent-game
     # Formula is committed to this separate tap repo, which you `brew tap`.
     repository:
-      owner: kevschroeder99
+      owner: itskbs
       name: homebrew-advent-game
       token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
     directory: Formula
-    homepage: "https://github.com/kevschroeder99/advent-game"
+    homepage: "https://github.com/itskbs/advent-game"
     description: "A CLI advent calendar: one puzzle a day, one letter per solve."
     license: "MIT"
     install: |

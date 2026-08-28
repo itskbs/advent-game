@@ -21,7 +21,7 @@ platform equivalent of Go's `os.UserConfigDir`).
 ## Installing
 
 ```sh
-brew tap kevschroeder99/advent-game
+brew tap itskbs/advent-game
 brew install advent-game
 ```
 
@@ -73,12 +73,12 @@ Tagging a version (`git tag v0.1.0 && git push --tags`) triggers
 
 1. Cross-compile binaries for macOS/Linux (amd64 + arm64)
 2. Publish a GitHub release with those binaries attached
-3. Push an updated formula to the `kevschroeder99/homebrew-advent-game`
+3. Push an updated formula to the `itskbs/homebrew-advent-game`
    tap repo
 
 One-time setup before the first release:
 
-- Create the `kevschroeder99/homebrew-advent-game` repo (empty is fine
+- Create the `itskbs/homebrew-advent-game` repo (empty is fine
   — GoReleaser creates `Formula/advent-game.rb` in it).
 - Add a repo secret `HOMEBREW_TAP_GITHUB_TOKEN`: a GitHub PAT with
   write access to that tap repo.
