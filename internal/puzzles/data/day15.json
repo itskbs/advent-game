@@ -1,8 +1,10 @@
 {
   "day": 15,
-  "title": "TODO: day 15 title",
-  "question": "TODO: write day 15's question",
-  "choices": ["TODO A", "TODO B", "TODO C", "TODO D"],
-  "answerIndex": 0,
-  "letter": "?"
+  "title": "Jingle's Confession",
+  "story": "You corner Jingle in the ice barn, and it all comes tumbling out between hiccups of guilt. While practicing his big jump to impress the older reindeer, he'd looped the Bell's ribbon around one antler — and when he leapt, the Bell flew off and shattered mid-air into scattered chimes, each one landing wherever someone nearby had just felt real Christmas cheer. To rebuild it, you'll need to track down every chime.",
+  "difficulty": "hard",
+  "type": "lookup",
+  "question": "No multiple choice this time — look it up: construction workers put up an unofficial tree at Rockefeller Center in 1931, but what year was the first official tree-lighting ceremony held there?",
+  "answer": "1933",
+  "letter": "L"
 }

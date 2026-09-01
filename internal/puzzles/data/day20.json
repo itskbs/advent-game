@@ -1,8 +1,11 @@
 {
   "day": 20,
-  "title": "TODO: day 20 title",
-  "question": "TODO: write day 20's question",
-  "choices": ["TODO A", "TODO B", "TODO C", "TODO D"],
+  "title": "The Boot by the Fire",
+  "story": "Most of the chimes are found and the ribbon's re-tied. Only one is missing — and word around the workshop is it landed somewhere so obvious that everyone's walked right past it for weeks: tucked inside Santa's own boot by the fireplace.",
+  "difficulty": "easy",
+  "type": "choice",
+  "question": "What color is Santa Claus's coat most commonly shown as in modern Western tradition?",
+  "choices": ["Red", "Green", "Blue", "White"],
   "answerIndex": 0,
-  "letter": "?"
+  "letter": "B"
 }

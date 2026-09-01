@@ -1,8 +1,11 @@
 {
   "day": 12,
   "title": "TODO: day 12 title",
+  "story": "TODO: write day 12's story beat",
+  "difficulty": "TODO",
+  "type": "choice",
   "question": "TODO: write day 12's question",
   "choices": ["TODO A", "TODO B", "TODO C", "TODO D"],
   "answerIndex": 0,
-  "letter": "?"
+  "letter": "B"
 }

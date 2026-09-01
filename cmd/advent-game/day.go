@@ -46,6 +46,10 @@ func runDay(day int, bypassLock bool) error {
 		return err
 	}
 
-	fmt.Printf("✅ Correct! You earned the letter %q. (%d/%d days solved)\n", p.Letter, prog.SolvedCount(), puzzles.LastDay)
+	if p.Letter == " " {
+		fmt.Printf("✅ Correct! You earned a space in the solution phrase. (%d/%d days solved)\n", prog.SolvedCount(), puzzles.LastDay)
+	} else {
+		fmt.Printf("✅ Correct! You earned the letter %q. (%d/%d days solved)\n", p.Letter, prog.SolvedCount(), puzzles.LastDay)
+	}
 	return nil
 }
