@@ -1,8 +1,11 @@
 {
   "day": 8,
-  "title": "TODO: day 8 title",
-  "question": "TODO: write day 8's question",
-  "choices": ["TODO A", "TODO B", "TODO C", "TODO D"],
+  "title": "Hoofprints in the Snow",
+  "story": "A week into the investigation, you find small hoofprints circling the vault's window, along with a few tufts of red felt caught on the frame. Everyone in the stables points to the same suspect: Jingle, the youngest reindeer calf, who's been sneaking out at night to \"practice tricks\" no one's allowed to watch.",
+  "difficulty": "medium",
+  "type": "choice",
+  "question": "In the poem 'A Visit from St. Nicholas' (better known as 'The Night Before Christmas'), which reindeer is named last in the original list, right after 'Donder'?",
+  "choices": ["Blitzen", "Vixen", "Comet", "Rudolph"],
   "answerIndex": 0,
-  "letter": "?"
+  "letter": "I"
 }

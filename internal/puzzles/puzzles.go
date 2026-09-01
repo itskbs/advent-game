@@ -7,6 +7,7 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
+	"strings"
 )
 
 //go:embed data/*.json
@@ -18,14 +19,32 @@ const (
 	LastDay  = 24
 )
 
-// Puzzle is a single day's quiz: a question, four choices, which one
-// is correct, and the letter awarded for a correct answer.
+// TypeChoice is a standard four-option multiple-choice puzzle. It's
+// the default when a puzzle's "type" field is left empty, so existing
+// puzzle files don't need to be touched to keep working.
+const TypeChoice = "choice"
+
+// TypeLookup is a puzzle with no given choices: the player has to
+// research the answer themselves (e.g. on the internet) and type it
+// in, and it's checked against Answer (case-insensitively, trimmed).
+const TypeLookup = "lookup"
+
+// Puzzle is a single day's quiz: a story beat continuing the advent
+// calendar's narrative, and a question of a given difficulty and
+// type. A "choice" puzzle offers four choices and an AnswerIndex; a
+// "lookup" puzzle instead has a free-text Answer the player must
+// find and type in themselves. Either way, a correct answer earns
+// Letter.
 type Puzzle struct {
 	Day         int      `json:"day"`
 	Title       string   `json:"title"`
+	Story       string   `json:"story"`
+	Difficulty  string   `json:"difficulty"`
+	Type        string   `json:"type"`
 	Question    string   `json:"question"`
-	Choices     []string `json:"choices"`
-	AnswerIndex int      `json:"answerIndex"`
+	Choices     []string `json:"choices,omitempty"`
+	AnswerIndex int      `json:"answerIndex,omitempty"`
+	Answer      string   `json:"answer,omitempty"`
 	Letter      string   `json:"letter"`
 }
 
@@ -45,11 +64,24 @@ func Load(day int) (Puzzle, error) {
 	if err := json.Unmarshal(raw, &p); err != nil {
 		return Puzzle{}, fmt.Errorf("puzzle for day %d is malformed: %w", day, err)
 	}
-	if len(p.Choices) != 4 {
-		return Puzzle{}, fmt.Errorf("puzzle for day %d must have exactly 4 choices, got %d", day, len(p.Choices))
+	if p.Type == "" {
+		p.Type = TypeChoice
 	}
-	if p.AnswerIndex < 0 || p.AnswerIndex > 3 {
-		return Puzzle{}, fmt.Errorf("puzzle for day %d has an invalid answerIndex %d", day, p.AnswerIndex)
+
+	switch p.Type {
+	case TypeChoice:
+		if len(p.Choices) != 4 {
+			return Puzzle{}, fmt.Errorf("puzzle for day %d must have exactly 4 choices, got %d", day, len(p.Choices))
+		}
+		if p.AnswerIndex < 0 || p.AnswerIndex > 3 {
+			return Puzzle{}, fmt.Errorf("puzzle for day %d has an invalid answerIndex %d", day, p.AnswerIndex)
+		}
+	case TypeLookup:
+		if strings.TrimSpace(p.Answer) == "" {
+			return Puzzle{}, fmt.Errorf("puzzle for day %d is type %q but has no answer", day, TypeLookup)
+		}
+	default:
+		return Puzzle{}, fmt.Errorf("puzzle for day %d has unknown type %q; want %q or %q", day, p.Type, TypeChoice, TypeLookup)
 	}
 	return p, nil
 }

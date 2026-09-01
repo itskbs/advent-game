@@ -1,8 +1,11 @@
 {
   "day": 24,
-  "title": "TODO: day 24 title",
-  "question": "TODO: write day 24's question",
-  "choices": ["TODO A", "TODO B", "TODO C", "TODO D"],
+  "title": "One Last Ring",
+  "story": "It's Christmas Eve. Every chime is back where it belongs, and Nutmeg carefully rings the reassembled Bell one final time — it sings out clear and golden, and the whole workshop holds its breath. One last trial stands between you and watching Santa's sleigh lift into the sky.",
+  "difficulty": "hard",
+  "type": "choice",
+  "question": "Christmas Eve traditionally marks the end of Advent and the start of which 12-day festive season that runs until Epiphany?",
+  "choices": ["Christmastide", "Advent", "Lent", "Epiphany"],
   "answerIndex": 0,
-  "letter": "?"
+  "letter": "!"
 }

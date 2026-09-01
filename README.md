@@ -43,6 +43,9 @@ baked into the binary at build time via `go:embed`. Format:
 {
   "day": 1,
   "title": "Short title shown above the question",
+  "story": "A sentence or two continuing that day's story beat",
+  "difficulty": "easy | medium | hard",
+  "type": "choice",
   "question": "The question text",
   "choices": ["A", "B", "C", "D"],
   "answerIndex": 0,
@@ -50,10 +53,71 @@ baked into the binary at build time via `go:embed`. Format:
 }
 ```
 
-Only `day01.json` has real content so far — days 2-24 are `TODO`
-placeholders (`letter: "?"`). Fill them in, and choose the 24 letters
-so that, read in order (day 1 → day 24), they spell your final
-solution word or phrase.
+`letter` can be a space (`" "`) instead of an actual letter, to spell
+a multi-word solution phrase — `day.go` shows a friendlier message
+("you earned a space in the solution phrase") for that case instead
+of printing a quoted blank.
+
+`type` is optional and defaults to `"choice"` (a normal four-option
+quiz) if omitted, so existing puzzle files don't need to change. Set
+it to `"lookup"` for a puzzle with no given choices — the player has
+to research the answer themselves (e.g. search it up online) and
+type it in, checked case-insensitively against `answer`:
+
+```json
+{
+  "day": 15,
+  "title": "...",
+  "story": "...",
+  "difficulty": "hard",
+  "type": "lookup",
+  "question": "A question whose answer has to be looked up, not guessed",
+  "answer": "1933",
+  "letter": "L"
+}
+```
+
+A `"lookup"` puzzle has no `choices`/`answerIndex` — just `answer`.
+Day 15 is a real example of this.
+
+#### The story so far
+
+**"The Case of the Silent Sleigh Bell."** The enchanted Sleigh Bell —
+the one that wakes itself every Christmas Eve and gives the sleigh
+its lift — has gone missing from the workshop vault. You're a
+brand-new junior elf sent to investigate. The trail leads to Jingle,
+a young reindeer calf who accidentally shattered the Bell mid-jump
+while practicing tricks, scattering its chimes everywhere someone
+nearby had just felt real Christmas cheer. Each day's trial earns
+enough trust/clues to keep the investigation moving, until the last
+chime turns up on Christmas Eve and the Bell rings again.
+
+Days 1, 8, 15, 20, and 24 are fully written and mark the story's
+current beats (intro → first clue → confession → penultimate clue →
+finale) — use them as the template and tone for the remaining days.
+Difficulty is deliberately mixed rather than escalating, so pick
+whatever fits each day's question, not its position in the calendar.
+Day 15 is also the one `"lookup"`-type example — mix in more of
+those wherever a question is better answered by research than by
+picking from four options.
+
+The solution phrase is **"THE SLEIGH BELL IS BACK!"** (24 characters,
+including 4 spaces and a trailing `!`) — every day's `letter` field
+already has the correct character set below, even for still-`TODO`
+days, so the mechanics work end-to-end today; only `title`,
+`story`, `difficulty`, `question`, and `choices` are left to write in:
+
+| Day | Letter | Day | Letter | Day | Letter | Day | Letter |
+|----:|:------:|----:|:------:|----:|:------:|----:|:------:|
+| 1 | `T` | 7 | `E` | 13 | `E` | 19 | `" "` |
+| 2 | `H` | 8 | `I` ✅ | 14 | `L` | 20 | `B` ✅ |
+| 3 | `E` | 9 | `G` | 15 | `L` ✅ | 21 | `A` |
+| 4 | `" "` | 10 | `H` | 16 | `" "` | 22 | `C` |
+| 5 | `S` | 11 | `" "` | 17 | `I` | 23 | `K` |
+| 6 | `L` | 12 | `B` | 18 | `S` | 24 | `!` ✅ |
+
+(✅ = fully written; the rest still have `TODO` title/story/question/
+choices, but the correct letter already in place.)
 
 ### Testing the date lock without waiting for December
 

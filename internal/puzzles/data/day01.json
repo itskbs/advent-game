@@ -1,8 +1,11 @@
 {
   "day": 1,
-  "title": "Santa's Little Helpers",
+  "title": "The Silent Bell",
+  "story": "Nutmeg the Head Elf bursts into the junior elves' break room, out of breath. The enchanted Sleigh Bell — the one that wakes itself every Christmas Eve and gives the sleigh its lift — has vanished from its velvet case in the workshop vault. Without it, the sleigh won't leave the ground. You're the newest recruit, fresh out of Elf Academy, and Nutmeg has just handed you the case.",
+  "difficulty": "easy",
+  "type": "choice",
   "question": "What do you traditionally call Santa's helpers who work in his workshop?",
   "choices": ["Elves", "Gnomes", "Fairies", "Dwarves"],
   "answerIndex": 0,
-  "letter": "A"
+  "letter": "T"
 }
